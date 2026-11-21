@@ -9,6 +9,31 @@
 
 都零依赖：`quote-check` 只用 Node 内置模块，`md-page` 只用 Python 标准库。
 
+## 30 秒试一下
+
+```bash
+git clone https://github.com/dufan-CN/dsh-tools.git
+cd dsh-tools
+
+# 核引文：examples 里四条引文，分别对应四种情况
+node quote-check.mjs --source examples/sample-book.txt --page examples/sample-notes.html
+
+# md 转网页
+python md-page.py examples/sample-book.txt -o /tmp/try.html
+```
+
+第一条命令会输出：
+
+```
+blockquote 总数:            4
+一字不差:                    1 / 4
+只差句末标点（逗号↔句号）:   1 / 4
+开头对得上（中段有出入）:    0 / 4
+真找不到:                    2 / 4
+```
+
+那四条是故意选成四种情况的：一条原文照抄、一条把分号写成了句号、一条前面加了 `therefore the first rule`、一条干脆是苏格拉底的话。**最后两条才是真问题。**
+
 ---
 
 # 一、quote-check
